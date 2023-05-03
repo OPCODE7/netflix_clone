@@ -1,50 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700;800&display=swap');
 
-body{
+body {
     font-family: 'Open Sans', sans-serif;
 }
 
 
 
-.bg-home{
+.bg-home {
     background-image: linear-gradient(0deg, rgba(0, 8, 29, 0.7), rgba(0, 8, 29, 0.7)),
-    url("../assets/bg-home-page.jpg");
+        url("../assets/bg-home-page.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
 }
 
-.netflix-logo{
+.netflix-logo {
     fill: rgba(229, 9, 20, 1);
 }
 
-.card-get-started{
-    background: linear-gradient(0deg, rgba(0, 8, 29, 1), rgba(0, 8, 29, 1)) padding-box,linear-gradient(271.65deg, #233371 5.26%, #00197a 50.02%,#e50914 97.68%) border-box;
+.card-get-started {
+    background: linear-gradient(0deg, rgba(0, 8, 29, 1), rgba(0, 8, 29, 1)) padding-box, linear-gradient(271.65deg, #233371 5.26%, #00197a 50.02%, #e50914 97.68%) border-box;
     border: 4px solid transparent;
     border-radius: 8px;
 }
 
-.fs-l{
+.fs-l {
     font-size: 2.5rem;
 }
 
-.fs-small{
+.fs-small {
     font-size: .9rem;
 }
 
-.btn-danger-danger{
+.btn-danger-danger {
     background-color: rgba(229, 9, 20, 1);
 }
 
-.btn-danger-danger:hover{
-   background-color: #C11119;
+.btn-danger-danger:hover {
+    background-color: #C11119;
 }
 
-.bg-dark-blue{
+.bg-dark-blue {
     background-color: #00081D;
 }
 
-.bg-blue{
+.bg-blue {
     background-color: #090626;
+}
+
+.bg-light-blue {
+    background-color: rgb(19, 33, 68);
+}
+
+.details {
+    cursor: pointer;
+}
+
+.accordion-button {
+    outline: none;
+    background-color: rgb(19, 33, 68);
+    border: none;
+
+}
+
+.accordion-button::after {
+    display: none;
+}
+
+.accordion-button:focus {
+    background-color: rgb(19, 33, 68);
+    outline: none;
+    border: none;
+    box-shadow: none;
+
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgb(19, 33, 68);
+}
+
+.fa-plus{
+    transition: all .3s;
+
+}
+
+.rotate-acordion-icon{
+    transform: rotate(45deg);
 }
