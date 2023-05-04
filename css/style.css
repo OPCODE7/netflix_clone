@@ -16,6 +16,8 @@ body {
 }
 
 .netflix-logo {
+    width: 150px;
+    height: 100px;
     fill: rgba(229, 9, 20, 1);
 }
 
@@ -36,6 +38,7 @@ body {
 .btn-danger-danger {
     background-color: rgba(229, 9, 20, 1);
 }
+
 
 .btn-danger-danger:hover {
     background-color: #C11119;
@@ -80,11 +83,39 @@ body {
     background-color: rgb(19, 33, 68);
 }
 
-.fa-plus{
+.fa-plus {
     transition: all .3s;
 
 }
 
-.rotate-acordion-icon{
+.rotate-acordion-icon {
     transform: rotate(45deg);
 }
+
+.w-40 {
+    width: 40%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.goog-te-gadget-simple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+}
+
+body {
+    top: 0 !important;
+}
+
+body>div:first-of-type {
+    display: none;
+    position: absolute;
+}
+
