@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -15,6 +15,10 @@ body {
     position: relative;
 }
 
+.bg-black-opacity {
+    background-color: #000000ab;
+}
+
 .netflix-logo {
     width: 150px;
     height: 100px;
@@ -29,6 +33,23 @@ body {
 
 .fs-l {
     font-size: 2.5rem;
+}
+
+.fs-small-small {
+    font-size: .8rem;
+}
+
+
+.text-orange {
+    color: #E87C03;
+}
+
+.bg-medium-gray {
+    background-color: #333333;
+}
+
+.none-outline {
+    outline: none;
 }
 
 .fs-small {
@@ -114,8 +135,23 @@ body {
     top: 0 !important;
 }
 
-body>div:first-of-type {
+body>.skiptranslate {
     display: none;
     position: absolute;
 }
 
+
+.focus-input + span{
+    top: 12px !important;
+    font-size: .7rem;
+}
+
+
+.list-item>a {
+    text-decoration: none;
+}
+
+.list-item>a:hover {
+    text-decoration: underline;
+
+}
