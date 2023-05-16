@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -28,32 +28,55 @@
                                 </g>
                             </svg>
                             <div>
-                                <a href="#" id="google_translate_element" class="btn btn btn-outline-light px-3 py-1 me-2 position-relative">
-                                    <i
-                                        class="fa-solid fa-globe me-4"></i><i class="fa-solid fa-caret-down"></i></a>
-                                <a href="pages/login.html" class="btn btn-danger-danger text-light py-1 fs-small ">Iniciar Sesión</a>
+                                <a href="#" id="google_translate_element"
+                                    class="btn btn btn-outline-light px-3 py-1 me-2 position-relative">
+                                    <i class="fa-solid fa-globe me-4"></i><i class="fa-solid fa-caret-down"></i></a>
+                                <a href="pages/login.html"
+                                    class="btn btn-danger-danger text-light py-1 fs-small ">Iniciar Sesión</a>
                             </div>
                         </div>
                     </nav>
                 </div>
                 <div class="col-12 text-light mt-5 px-4" id="get-started">
-                    <h1 class="fw-bolder fs-l">Películas y series ilimitadas y mucho más</h1>
-                    <p class="fw-bold fs-4">Planes desde USD4.99 al mes.</p>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 col-md-9">
+                            <h1 class="fw-bolder fs-l">Películas y series ilimitadas y mucho más</h1>
+                            <p class="fw-bold fs-4">Planes desde USD4.99 al mes.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 px-4" >
-                    <div class="card card-get-started p-3">
-                        <div class="card-body">
-                            <form>
-                                <label for="" class="text-light">¿Quieres ver Netflix ya? Ingresa tu email para crear
-                                    una
-                                    cuenta o reiniciar tu membresía de Netflix.</label>
-                                <div class="my-3">
-                                    <input type="email" class="form-control bg-dark" placeholder="Email">
-                                </div>
-                                <a href="pages/completeconfiguration.html" class="btn btn-danger-danger text-light">
-                                    Comenzar 
-                                    <i class="fa-solid fa-chevron-right ms-2"></i></a>
-                            </form>
+                <div class="col-12  px-4">
+                    <div class="row d-flex justify-content-center">
+                        <div class="card card-get-started p-3 col-12 col-md-9">
+                            <div class="card-body">
+                                <form>
+                                    <label for="" class="text-light">¿Quieres ver Netflix ya? Ingresa tu email para
+                                        crear
+                                        una
+                                        cuenta o reiniciar tu membresía de Netflix.</label>
+                                    <div class="my-3 d-flex flex-column">
+                                        <div class="position-relative bg-medium-gray rounded">
+                                            <input type="email"
+                                                class="none-outline w-100  text-white bg-transparent pt-4 px-3 input-form border-0"
+                                                id="signup-email" aria-describedby="email">
+                                            <span
+                                                class="fs-small position-absolute top-50 start-0 translate-middle-y text-white-50 ms-3 fw-lighter">Email</span>
+                                        </div>
+                                        <span
+                                            class="fs-small-small text-danger d-none valid-message-input my-2">
+                                            <i class="fa-regular fa-circle-xmark me-1"></i>
+                                            Ingresa un email
+                                            válido.
+                                        </span>
+                                        <button class="btn btn-danger-danger text-light button-started w-40 mt-2">
+                                            Comenzar
+                                            <i class="fa-solid fa-chevron-right ms-2"></i>
+                                        </button>
+
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,10 +268,26 @@
                             <label for="" class="text-light">¿Quieres ver Netflix ya? Ingresa tu email para crear
                                 una
                                 cuenta o reiniciar tu membresía de Netflix.</label>
-                            <div class="my-3 d-flex flex-column flex-md-row gap-2">
-                                <input type="email" class="form-control bg-dark w-60" placeholder="Email">
-                                <button type="submit" class="btn btn-danger-danger text-light  w-40">Comenzar <i
-                                        class="fa-solid fa-chevron-right ms-2"></i></button>
+                            <div class="my-3 d-flex  flex-column flex-md-row flex-wrap">
+                                <div class="position-relative bg-medium-gray rounded w-50 me-2">
+                                    <input type="email"
+                                        class="none-outline border border-0  w-100  text-white bg-transparent pt-4 px-3 input-form"
+                                        id="signup-email" aria-describedby="email">
+                                    <span
+                                        class="fs-small position-absolute top-50 start-0 translate-middle-y text-white-50 ms-3 fw-lighter">Email
+                                    </span>
+                                </div>
+                    
+                                <span class="fs-small-small text-danger d-none valid-message-input w-100 mt-3 order-1">
+                                    <i class="fa-regular fa-circle-xmark me-1"></i>
+                                    Ingresa un email
+                                    válido.
+                                </span>
+
+                                <button
+                                class="btn btn-danger-danger text-light  w-40 button-started d-flex align-items-center">Comenzar
+                                <i class="fa-solid fa-chevron-right ms-2"></i>
+                            </button>
                             </div>
 
                         </form>
@@ -319,13 +358,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="js/home.js"></script>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'es', includedLanguages: 'ca,eu,gl,en,fr,it,pt,de', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true }, 'google_translate_element');
-        }
-    </script>
+    <script src="js/home.js" type="module"></script>
+    <script src="js/translate_google_feature.js"></script>
 
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
