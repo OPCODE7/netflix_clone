@@ -164,3 +164,12 @@ body {
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf{
     display: none;
 }
+
+.container-plan-buttons{
+    height: 20vh;
+}
+
+.btn-plan-shop, .prices > span{
+    width: 15%;
+    height: 100%;
+}
