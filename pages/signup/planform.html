@@ -30,7 +30,7 @@
                 <a href="../../pages/login.html" class="text-dark py-1 fs-6  fw-bold text-hover-underline">Iniciar
                     Sesión</a>
             </header>
-            <main class="container col-12 col-md-9 col-lg-10 px-2">
+            <main class="col-12 col-md-10 px-3">
                 <span class="fs-small mt-4">PASO <b>2</b> DE <b>3</b></span>
                 <h1 class="fw-bold mb-4 fs-2">Selecciona el plan ideal para ti</h1>
                 <p class="fs-6 pe-5"> <i class="fa-solid fa-check me-2 text-danger"></i>Sin compromisos, cancela
@@ -41,58 +41,79 @@
                     tus dispositivos.</p>
 
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-end container-plan-buttons position-sticky top-0">
-                        <button class="btn btn-danger rounded-0 btn-plan-shop fw-bold">Básico</button>
-                        <button class="btn btn-danger rounded-0 btn-plan-shop mx-4 fw-bold">Estándar</button>
-                        <button class="btn btn-danger rounded-0 btn-plan-shop fw-bold">Premium</button>
-                    </div>
-                    <div class="col-12 border-bottom p-3 d-flex align-items-center justify-content-between mt-3">
-                        <h6>Precio mensual</h6>
-                        <div class="prices w-50 d-flex justify-content-evenly">
-                            <span class="text-secondary">USD4.99</span>
-                            <span class="text-secondary">USD7.99</span>
-                            <span class="text-secondary">USD10.99</span>
+                    <div class="col-12 position-sticky top-0">
+                        <div class="row d-flex justify-content-around justify-content-md-end  gap-md-4">
+                            <button
+                                class="col-3 col-md-2 py-4 py-lg-5 rounded-0 btn-plan-shop fw-bold " id="btn-basic-plan">Básico</button>
+                            <button
+                                class="col-3 col-md-2 py-4 py-lg-5 rounded-0 btn-plan-shop fw-bold " id="btn-standard-plan">Estándar</button>
+                            <button
+                                class="col-3 col-md-2 py-4 py-lg-5 rounded-0 btn-plan-shop fw-bold plan-selected" id="btn-premium-plan">Premium</button>
                         </div>
                     </div>
-                    <div class="col-12 border-bottom p-3 d-flex align-items-center justify-content-between">
-                        <h6>Calidad de video</h6>
-                        <div class="prices w-50 d-flex justify-content-evenly">
-                            <span class="text-secondary">Buena</span>
-                            <span class="text-secondary">Mejor</span>
-                            <span class="text-secondary">Optima</span>
+                    <div
+                        class="col-12 border-bottom p-3  mt-3">
+                        <div class="row d-flex flex-column flex-md-row align-items-center justify-content-between">
+                            <h6 class="col-12 col-md-5 text-center text-md-start">Precio mensual</h6>
+                            <div class="col-12 col-md-7 d-flex justify-content-around">
+                                <span class="text-secondary" id="option-basic">USD4.99</span>
+                                <span class="text-secondary" id="option-standard">USD7.99</span>
+                                <span class="text-danger" id="option-premium">USD10.99</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 border-bottom p-3 d-flex align-items-center justify-content-between">
-                        <h6>Resolución</h6>
-                        <div class="prices w-50 d-flex justify-content-evenly">
-                            <span class="text-secondary">720p</span>
-                            <span class="text-secondary">1080p</span>
-                            <span class="text-secondary">4k + HDR</span>
+                    <div class="col-12 border-bottom p-3">
+                        <div class="row d-flex flex-column flex-md-row align-items-center justify-content-between">
+                            <h6 class="col-12 col-md-5 text-center text-md-start">Calidad de video</h6>
+                            <div class="col-12 col-md-7 d-flex justify-content-around">
+                                <span class="text-secondary" id="option-basic">Buena</span>
+                                <span class="text-secondary" id="option-standard">Mejor</span>
+                                <span class="text-danger" id="option-premium">Optima</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 border-bottom p-3 d-flex align-items-center justify-content-between">
-                        <h6>Ve Netflix en tu TV, computadora, celular y tablet</h6>
-                        <div class="prices w-50 d-flex justify-content-around">
-                            <i class="fa-solid fa-check text-secondary"></i>
-                            <i class="fa-solid fa-check text-secondary"></i>
-                            <i class="fa-solid fa-check text-secondary"></i>
+                    <div class="col-12 border-bottom p-3">
+                        <div class="row d-flex flex-column flex-md-row align-items-center justify-content-between">
+                            <h6 class="col-12 col-md-5 text-center text-md-start">Resolución</h6>
+                            <div class="col-12 col-md-7 d-flex justify-content-around">
+                                <span class="text-secondary" id="option-basic">720p</span>
+                                <span class="text-secondary" id="option-standard">1080p</span>
+                                <span class="text-danger" id="option-premium">4k + HDR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 border-bottom p-3">
+                        <div class="row d-flex flex-column flex-md-row align-items-center justify-content-between">
+                            <h6 class="col-12 col-md-5 text-center text-md-start">Ve Netflix en tu TV, computadora, celular y tablet</h6>
+                            <div class="col-12 col-md-7 d-flex justify-content-around">
+                                <i class="fa-solid fa-check text-secondary fs-4" id="option-basic"></i>
+                                <i class="fa-solid fa-check text-secondary fs-4" id="option-standard"></i>
+                                <i class="fa-solid fa-check text-danger fs-4" id="option-premium"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row mt-4 d-flex flex-column align-items-center">
                     <div class="col-12">
                         <p class="fs-small text-secondary">
-                            La disponibilidad del contenido en HD (720p), Full HD (1080p), Ultra HD (4K) y HDR depende de tu
-                            servicio de internet y del dispositivo en uso. No todo el contenido está disponible en todas las
-                            resoluciones. Consulta nuestros <a href="#" class="text-decoration-none">Términos de uso</a> para obtener más información.
-                            Solo las personas que vivan contigo pueden usar tu cuenta. Puedes ver Netflix en 4 dispositivos
+                            La disponibilidad del contenido en HD (720p), Full HD (1080p), Ultra HD (4K) y HDR depende
+                            de tu
+                            servicio de internet y del dispositivo en uso. No todo el contenido está disponible en todas
+                            las
+                            resoluciones. Consulta nuestros <a href="#" class="text-decoration-none">Términos de uso</a>
+                            para obtener más información.
+                            Solo las personas que vivan contigo pueden usar tu cuenta. Puedes ver Netflix en 4
+                            dispositivos
                             al mismo tiempo con el plan Premium, en 2 con el plan Estándar y en 1 con el plan Básico.
                         </p>
                         <br>
-                        <p class="fs-small text-secondary">Solo las personas que vivan contigo pueden usar tu cuenta. Puedes ver Netflix en 4 dispositivos al mismo tiempo con el plan Premium, en 2 con el plan Estándar y en 1 con el plan Básico.</p>
+                        <p class="fs-small text-secondary">Solo las personas que vivan contigo pueden usar tu cuenta.
+                            Puedes ver Netflix en 4 dispositivos al mismo tiempo con el plan Premium, en 2 con el plan
+                            Estándar y en 1 con el plan Básico.</p>
                     </div>
                     <div class="col-9 col-md-5">
-                        <a href="./planform.html" class="btn btn-danger-danger rounded fs-4 text-white py-3 mt-2 w-100">Siguiente</a>
+                        <a href="./planform.html"
+                            class="btn btn-danger-danger rounded fs-4 text-white py-3 mt-2 w-100">Siguiente</a>
                     </div>
                 </div>
 
@@ -135,6 +156,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
         </script>
+    <script src="../../js/forms.js" type="module"></script>
 </body>
 
 </html>

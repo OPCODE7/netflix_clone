@@ -165,11 +165,30 @@ body {
     display: none;
 }
 
-.container-plan-buttons{
-    height: 20vh;
+.btn-plan-shop{
+    background-color: #c02028af;
+    outline: none;
+    border: none;
+    color: white;
 }
 
-.btn-plan-shop, .prices > span{
-    width: 15%;
-    height: 100%;
+.plan-selected{
+    background-color: #e50914;
+    position: relative;
+}
+
+.plan-selected::before{
+    content: '';
+    background-color: #e50914;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: -.8rem;
+    left: 50%;
+    translate: -50%;
+    transform: rotate(45deg);
+}
+
+.option-plan-selected{
+    color: #e50914;
 }
