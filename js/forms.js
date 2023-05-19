@@ -138,8 +138,16 @@ d.addEventListener("click", e => {
                 }
             });
         }
+    }
 
-
+    if(e.target.matches("#btn-open-modal-cvv")){
+        e.preventDefault();
+        d.querySelector(".container-cvv-question").classList.remove("d-none");
+    }
+    
+    if(e.target.matches("#close-cvv-modal")){
+        e.preventDefault();
+        d.querySelector(".container-cvv-question").classList.add("d-none");
     }
 });
 
