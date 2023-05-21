@@ -11,16 +11,21 @@ d.addEventListener("click", e=> {
         e.preventDefault();
         const $emailInput= e.target.parentElement.firstElementChild.querySelector("#signup-email");
         const $validMessage= e.target.previousElementSibling;
-        if(!validEmail($emailInput.value)){
-            $emailInput.focus();
-            $validMessage.classList.remove("d-none");
 
-            
+        if(localStorage.getItem("user")===null){
+            if(!validEmail($emailInput.value)){
+                $emailInput.focus();
+                $validMessage.classList.remove("d-none");
+    
+                
+            }else{
+                window.location.href= "pages/signup/completeconfiguration.html";
+                $validMessage.classList.add("d-none");
+                localStorage.setItem("user",$emailInput.value);
+                
+            }
         }else{
             window.location.href= "pages/signup/completeconfiguration.html";
-            $validMessage.classList.add("d-none");
-            localStorage.setItem("user",$emailInput.value);
-
         }
     }
 });

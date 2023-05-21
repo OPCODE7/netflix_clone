@@ -144,7 +144,7 @@ body {
 
 }
 
-.VIpgJd-ZVi9od-xl07Ob-lTBxed  > :nth-child(3),:nth-child(5){
+.VIpgJd-ZVi9od-xl07Ob-lTBxed  > :nth-child(3), .VIpgJd-ZVi9od-xl07Ob-lTBxed > :nth-child(5){
     display: none;
 }
 
