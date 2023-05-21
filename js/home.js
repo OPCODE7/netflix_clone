@@ -14,10 +14,13 @@ d.addEventListener("click", e=> {
         if(!validEmail($emailInput.value)){
             $emailInput.focus();
             $validMessage.classList.remove("d-none");
+
             
         }else{
             window.location.href= "pages/signup/completeconfiguration.html";
             $validMessage.classList.add("d-none");
+            localStorage.setItem("user",$emailInput.value);
+
         }
     }
 });

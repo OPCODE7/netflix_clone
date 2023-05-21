@@ -13,7 +13,6 @@ $buttonTranslate.addEventListener("click", e => {
 d.addEventListener("DOMContentLoaded", e => {
     if($buttonTranslate.classList.contains("light-style")){
         setTimeout(() => {
-            
             d.querySelector(".VIpgJd-ZVi9od-xl07Ob-lTBxed > span:first-of-type").classList.add("text-dark");
         }, 3000);
     }
