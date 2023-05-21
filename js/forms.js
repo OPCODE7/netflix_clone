@@ -5,6 +5,11 @@ export function validEmail(inputValue) {
 
 
 const d = document;
+let infoPlanSelected= {
+    price:"USD10.99",
+    description:"Premium"
+};
+
 
 function changeToNoValidBorder(target) {
     target.classList.add("border-1");
@@ -78,6 +83,8 @@ d.addEventListener("click", e => {
         
 
         if (e.target.id === "btn-basic-plan") {
+            infoPlanSelected.price= "USD4.99";
+            infoPlanSelected.description= "Básico";
             $btnBasicPlan.classList.add("plan-selected");
 
             if($btnStandardPlan.classList.contains("plan-selected")) $btnStandardPlan.classList.remove("plan-selected");
@@ -98,6 +105,8 @@ d.addEventListener("click", e => {
                 }
             });
         } else if (e.target.id === "btn-standard-plan") {
+            infoPlanSelected.price= "USD7.99";
+            infoPlanSelected.description= "Estándar";
             $btnStandardPlan.classList.add("plan-selected");
 
             if($btnBasicPlan.classList.contains("plan-selected")) $btnBasicPlan.classList.remove("plan-selected");
@@ -119,6 +128,8 @@ d.addEventListener("click", e => {
                 }
             });
         } else if (e.target.id === "btn-premium-plan") {
+            infoPlanSelected.price= "USD10.99";
+            infoPlanSelected.description= "Premium";
             $btnPremiumPlan.classList.add("plan-selected");
 
             if($btnBasicPlan.classList.contains("plan-selected")) $btnBasicPlan.classList.remove("plan-selected");
@@ -148,6 +159,20 @@ d.addEventListener("click", e => {
     if(e.target.matches("#close-cvv-modal")){
         e.preventDefault();
         d.querySelector(".container-cvv-question").classList.add("d-none");
+    }
+
+    if(e.target.matches("#go-payment-picker")){
+        localStorage.setItem("infoPlanSelected",JSON.stringify(infoPlanSelected));
+    }
+});
+
+d.addEventListener("DOMContentLoaded",e => {
+    let url= e.target.URL.split('/');
+
+    if(url[url.length-1]==="creditoption.html"){
+        let infoPlan= JSON.parse(localStorage.getItem("infoPlanSelected"));
+        d.querySelector("#price-plan").textContent=infoPlan.price;
+        d.querySelector("#description-plan").textContent= infoPlan.description;
     }
 });
 
