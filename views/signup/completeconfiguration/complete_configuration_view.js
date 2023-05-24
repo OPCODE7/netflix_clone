@@ -7,7 +7,6 @@ const $buttonTranslate = d.querySelector("#google_translate_element");
 let google_script_url = "//translate.google.com/translate_a/element.js";
 let script= d.querySelector("script[src*='"+google_script_url+"']");
 
-
 $buttonTranslate.addEventListener("click", e => {
     e.preventDefault();
     translateGoogleController.googleTranslateElementInit(e.target.id,script);

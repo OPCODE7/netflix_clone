@@ -12,9 +12,5 @@ export default class TranslateGoogleController {
                 clearInterval(timer);
             }
         }, 3000);
-
     }
-
-
-   
 }
