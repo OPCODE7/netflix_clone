@@ -19,8 +19,14 @@ export class Form{
         return inputValue.length===0  ? true : false;
     }
 
+    validDateFormatMMAA(inputValue){
+        const regExp = new RegExp("(((0[123456789]|10|11|12)/(([2-4][3-9]))))");
+
+        return regExp.test(inputValue) ? true : false;
+    }
+
     onlyLetters(inputValue){
-        const regExp= /[a-zA-Z\s]/g;
+        const regExp= /^[a-z\s]+$/gi;
         return regExp.test(inputValue) ? true : false;
     }
 
@@ -36,7 +42,6 @@ export class Form{
     }
     
     validDataStyleBorder(target) {
-        target.classList.remove("border-1");
         target.classList.remove("border-danger");
         target.classList.add("border-1");
         target.classList.add("border-success");
@@ -87,4 +92,15 @@ d.addEventListener("keyup", e => {
             !form.validPassword(e.target.value) ? form.invalidDataStyleBorder(e.target) : form.validDataStyleBorder(e.target);
         }
     }
+});
+
+
+d.addEventListener("DOMContentLoaded", e => {
+    const inputs= d.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        if(input.value.length>0){
+            input.classList.add("focus-input");
+        }
+    });
 });
