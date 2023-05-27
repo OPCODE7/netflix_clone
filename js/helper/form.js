@@ -42,6 +42,7 @@ export class Form{
     }
     
     validDataStyleBorder(target) {
+        target.classList.remove("border-1");
         target.classList.remove("border-danger");
         target.classList.add("border-1");
         target.classList.add("border-success");
@@ -73,7 +74,8 @@ d.addEventListener("focusout", e => {
         if (e.target.value.length === 0) {
             e.target.classList.remove("focus-input");
             $validMessage.classList.remove("d-none");
-        } else {
+        } 
+        else {
             $validMessage.classList.add("d-none");
         }
     }

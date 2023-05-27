@@ -43,7 +43,7 @@ d.addEventListener("click", e => {
             $dateExpiry.focus();
             form.invalidDataStyleBorder($dateExpiry.parentElement);
             $errorMessageDate.classList.remove("d-none");
-        } else if (form.validEmptyInput($cvv.value) || ($cvv.value.length <= 2 || $cvv.value.length > 4) || !(/^[A-Za-z0-9]+$/g.test($cvv.value))) {
+        } else if (!(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value))) {
             $cvv.focus();
             form.invalidDataStyleBorder($cvv.parentElement);
             $errorMessageCvv.classList.remove("d-none");
@@ -54,62 +54,31 @@ d.addEventListener("click", e => {
         } else {
             window.location.href = "home";
         }
-
     }
 });
 
 
 d.addEventListener("focusout", e => {
     if (e.target === $creditInput) {
-        if (!form.validCreditTarget($creditInput.value)) {
-            $creditInput.focus();
-            form.invalidDataStyleBorder($creditInput.parentElement);
-            $errorMessageCredit.classList.remove("d-none");
-        } else {
-            form.validDataStyleBorder($creditInput.parentElement);
-        }
+        validateControlInput(form.validCreditTarget($creditInput.value),$creditInput,$errorMessageCredit);
     }
 
     if (e.target === $dateExpiry) {
-        e.target.placeholder = "";
-        if (!form.validDateFormatMMAA($dateExpiry.value)) {
-            $dateExpiry.focus();
-            $errorMessageDate.classList.remove("d-none");
-            form.invalidDataStyleBorder($dateExpiry.parentElement);
-        } else {
-            form.validDataStyleBorder($dateExpiry.parentElement);
-        }
+        $dateExpiry.placeholder= "";
+        validateControlInput(form.validDateFormatMMAA($dateExpiry.value),$dateExpiry,$errorMessageDate);
     }
 
     if (e.target === $cvv) {
-        if (($cvv.value.length <= 2 || $cvv.value.length > 4) || !(/^[A-Za-z0-9]+$/g.test($cvv.value))) {
-            //optimizar por una expresion regular que incluya todas las validaciones
-            $cvv.focus();
-            $errorMessageCvv.classList.remove("d-none");
-            form.invalidDataStyleBorder($cvv.parentElement);
-        } else {
-            form.validDataStyleBorder($cvv.parentElement);
-        }
+        validateControlInput(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value),$cvv,$errorMessageCvv);
     }
 
     if (e.target === $name) {
-        if (!form.onlyLetters($name.value)) {
-            $name.focus();
-            $errorMessageName.classList.remove("d-none");
-            form.invalidDataStyleBorder($name.parentElement);
-        } else {
-            form.validDataStyleBorder($name.parentElement);
-        }
+        validateControlInput(form.onlyLetters($name.value),$name,$errorMessageName);
     }
 
     if (e.target === $lastname) {
         if (e.target.value.length > 0) {
-            if (!form.onlyLetters($lastname.value)) {
-                $errorMessageLastName.classList.remove("d-none");
-                form.invalidDataStyleBorder($lastname.parentElement);
-            } else {
-                form.validDataStyleBorder($lastname.parentElement);
-            }
+            validateControlInput(form.onlyLetters($lastname.value),$lastname,$errorMessageLastName);
         } else {
             $errorMessageLastName.classList.add("d-none");
             form.validDataStyleBorder($lastname.parentElement);
@@ -125,55 +94,54 @@ $dateExpiry.addEventListener("focusin", e => {
 
 d.addEventListener("keyup", e => {
     if (e.target === $creditInput) {
-        if (!form.validCreditTarget($creditInput.value)) {
-            $creditInput.focus();
-            form.invalidDataStyleBorder($creditInput.parentElement);
-            $errorMessageCredit.classList.remove("d-none");
-        } else {
-            form.validDataStyleBorder($creditInput.parentElement);
-        }
+        validateControlInput(form.validCreditTarget($creditInput.value),$creditInput,$errorMessageCredit);
     }
 
     if (e.target === $dateExpiry) {
-        e.target.placeholder = "";
-        if (!form.validDateFormatMMAA($dateExpiry.value)) {
-            $dateExpiry.focus();
-            $errorMessageDate.classList.remove("d-none");
-            form.invalidDataStyleBorder($dateExpiry.parentElement);
-        } else {
-            form.validDataStyleBorder($dateExpiry.parentElement);
+        let arrayDateValue = $dateExpiry.value.split('');
+
+        if (e.key > 1 && $dateExpiry.value.length < 2) {
+            $dateExpiry.value = `0${e.key}/`;
         }
+        if ($dateExpiry.value.length === 2 && e.key !== "Backspace") {
+            if (Number.parseInt($dateExpiry.value) > 12) {
+                $dateExpiry.value = `01/${arrayDateValue[1]}`;
+            } else {
+                $dateExpiry.value += "/";
+            }
+        }
+
+        if ($dateExpiry.value.length === 5) {
+            let currentDate = new Date();
+            let yearUserInput = arrayDateValue.splice(3, 4).join('');
+
+            if (yearUserInput < currentDate.getFullYear().toString().split('').splice(2, 3).join('') || yearUserInput > 49) {
+                $errorMessageDate.textContent = `Ingresar año entre ${currentDate.getFullYear()} y 2049`;
+                $errorMessageDate.classList.remove("d-none");
+            }
+
+        }
+
+        if (isNaN(e.key) && e.key !== "Backspace") {
+            arrayDateValue.pop();
+            $dateExpiry.value = arrayDateValue.join('');
+        }
+
+        validateControlInput(form.validDateFormatMMAA($dateExpiry.value),$dateExpiry,$errorMessageDate);
+
     }
 
     if (e.target === $cvv) {
-        if (($cvv.value.length <= 2 || $cvv.value.length > 4) || !(/^[A-Za-z0-9]+$/g.test($cvv.value))) {
-            //optimizar por una expresion regular que incluya todas las validaciones
-            $cvv.focus();
-            $errorMessageCvv.classList.remove("d-none");
-            form.invalidDataStyleBorder($cvv.parentElement);
-        } else {
-            form.validDataStyleBorder($cvv.parentElement);
-        }
+        validateControlInput(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value),$cvv,$errorMessageCvv);
     }
 
     if (e.target === $name) {
-        if (!form.onlyLetters($name.value)) {
-            $name.focus();
-            $errorMessageName.classList.remove("d-none");
-            form.invalidDataStyleBorder($name.parentElement);
-        } else {
-            form.validDataStyleBorder($name.parentElement);
-        }
+        validateControlInput(form.onlyLetters($name.value),$name,$errorMessageName);
     }
 
     if (e.target === $lastname) {
         if (e.target.value.length > 0) {
-            if (!form.onlyLetters($lastname.value)) {
-                $errorMessageLastName.classList.remove("d-none");
-                form.invalidDataStyleBorder($lastname.parentElement);
-            } else {
-                form.validDataStyleBorder($lastname.parentElement);
-            }
+            validateControlInput(form.onlyLetters($lastname.value),$lastname,$errorMessageLastName);
         } else {
             $errorMessageLastName.classList.add("d-none");
             form.validDataStyleBorder($lastname.parentElement);
@@ -181,40 +149,6 @@ d.addEventListener("keyup", e => {
     }
 });
 
-
-$dateExpiry.addEventListener("keyup", e => {
-    let arrayDateValue = $dateExpiry.value.split('');
-
-    if (e.key > 1 && $dateExpiry.value.length < 2) {
-        $dateExpiry.value = `0${e.key}/`;
-    }
-    if ($dateExpiry.value.length === 2 && e.key !== "Backspace") {
-        if (Number.parseInt($dateExpiry.value) > 12) {
-            $dateExpiry.value = `01/${arrayDateValue[1]}`;
-        } else {
-            $dateExpiry.value += "/";
-        }
-    }
-
-    if ($dateExpiry.value.length === 5) {
-        let currentDate = new Date();
-        let yearUserInput = arrayDateValue.splice(3, 4).join('');
-
-        if (yearUserInput < currentDate.getFullYear().toString().split('').splice(2, 3).join('') || yearUserInput > 49) {
-            $errorMessageDate.textContent = `Ingresar año entre ${currentDate.getFullYear()} y 2049`;
-            $errorMessageDate.classList.remove("d-none");
-        }
-
-    }
-
-    //aun falta terminar con los slash verificar qeu no elimine este a menos que este en una pocision diferente a la 2 del arreglo.
-    if (isNaN(e.key) && e.key !== "Backspace") {
-        arrayDateValue.pop();
-        $dateExpiry.value = arrayDateValue.join('');
-    }
-
-
-});
 
 d.addEventListener("DOMContentLoaded", e => {
     let infoPlan = JSON.parse(localStorage.getItem("infoPlanSelected"));
@@ -227,7 +161,16 @@ d.addEventListener("DOMContentLoaded", e => {
 
     d.querySelector("#price-plan").textContent = infoPlan.price;
     d.querySelector("#description-plan").textContent = infoPlan.description;
-
-
 });
 
+
+function validateControlInput(validation,input,message){
+    if(!validation){
+        input.focus();
+        message.classList.remove("d-none");
+        form.invalidDataStyleBorder(input.parentElement);
+    }else{
+        message.classList.add("d-none");
+        form.validDataStyleBorder(input.parentElement);
+    }
+}
