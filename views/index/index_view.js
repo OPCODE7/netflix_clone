@@ -1,8 +1,8 @@
-import LoginController from "../../controller/login_controller.js";
+import RegisterController from "../../controller/register_session_controller.js";
 
 const d = document;
 
-const loginController = new LoginController();
+const registerController = new RegisterController();
 
 d.addEventListener("click", e => {
     if (e.target.matches(".accordion-button")) {
@@ -14,9 +14,8 @@ d.addEventListener("click", e => {
         const $emailInput = e.target.parentElement.firstElementChild.querySelector("#signup-email");
         const $validMessage = e.target.previousElementSibling;
 
-        let response = loginController.saveSession($emailInput.value);
+        let response = registerController.saveSession($emailInput.value);
 
-        console.log(response);
         if (!response) {
             $emailInput.focus();
             $validMessage.classList.remove("d-none");
@@ -28,7 +27,7 @@ d.addEventListener("click", e => {
 });
 
 d.addEventListener("DOMContentLoaded", e => {
-    let existSession= loginController.getSession();
+    let existSession= registerController.getSession();
     const $signupEmail= d.querySelectorAll("#signup-email");
     const $buttonStartSuscription= d.querySelectorAll(".button-started");
     const $btnSession= d.querySelector(".btn-session");
