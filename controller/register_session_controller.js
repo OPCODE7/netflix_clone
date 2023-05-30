@@ -8,7 +8,7 @@ export default class RegisterController{
     }
 
     saveSession(email){
-        if(localStorage.getItem("user")===null){
+        if(this.registerModel.getSession()===null){
             if(this.form.validEmail(email)){
                 this.registerModel.saveSession(email);
                 window.location.href= "views/signup/completeconfiguration/completeconfiguration.html";
@@ -25,7 +25,12 @@ export default class RegisterController{
     getSession(){
         let getSession= this.registerModel.getSession();
         return getSession !== null ? true : false;
+    }
 
+    closeSession(){
+        if(this.registerModel.getSession()!==null){
+            this.registerModel.closeSession();
+        }
     }
 
 }

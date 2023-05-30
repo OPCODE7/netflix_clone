@@ -22,7 +22,12 @@ d.addEventListener("click", e => {
         }else{
             $validMessage.classList.add("d-none");
         }
+    }
 
+    if(e.target.matches(".btn-session")){
+        if(e.target.textContent==="Cerrar Sesión"){
+            registerController.closeSession();
+        }
     }
 });
 
@@ -33,6 +38,7 @@ d.addEventListener("DOMContentLoaded", e => {
     const $btnSession= d.querySelector(".btn-session");
     if(existSession){
         $btnSession.textContent="Cerrar Sesión";
+        $btnSession.href= "index.html";
         $buttonStartSuscription.forEach(button => button.textContent= "Completar Suscripción");
         
         $signupEmail.forEach(email => {

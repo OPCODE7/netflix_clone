@@ -1,8 +1,10 @@
+import RegisterController from "../../../controller/register_session_controller.js";
 import { Form } from "../../../js/helper/form.js";
 
 const d = document;
 
 const form = new Form();
+const registerController= new RegisterController();
 
 
 const $creditInput = d.getElementsByName("credit-card")[0];
@@ -16,6 +18,9 @@ const $errorMessageCredit = $creditInput.parentElement.nextElementSibling, $erro
 
 d.addEventListener("click", e => {
 
+    if (e.target.matches(".btn-session")) {
+        registerController.closeSession();
+    }
     if (e.target.matches("#btn-open-modal-cvv")) {
         e.preventDefault();
         d.querySelector(".container-cvv-question").classList.remove("d-none");
@@ -54,25 +59,25 @@ d.addEventListener("click", e => {
 
 d.addEventListener("focusout", e => {
     if (e.target === $creditInput) {
-        validateControlInput(form.validCreditTarget($creditInput.value),$creditInput,$errorMessageCredit);
+        validateControlInput(form.validCreditTarget($creditInput.value), $creditInput, $errorMessageCredit);
     }
 
     if (e.target === $dateExpiry) {
-        $dateExpiry.placeholder= "";
-        validateControlInput(form.validDateFormatMMAA($dateExpiry.value),$dateExpiry,$errorMessageDate);
+        $dateExpiry.placeholder = "";
+        validateControlInput(form.validDateFormatMMAA($dateExpiry.value), $dateExpiry, $errorMessageDate);
     }
 
     if (e.target === $cvv) {
-        validateControlInput(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value),$cvv,$errorMessageCvv);
+        validateControlInput(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value), $cvv, $errorMessageCvv);
     }
 
     if (e.target === $name) {
-        validateControlInput(form.onlyLetters($name.value),$name,$errorMessageName);
+        validateControlInput(form.onlyLetters($name.value), $name, $errorMessageName);
     }
 
     if (e.target === $lastname) {
         if (e.target.value.length > 0) {
-            validateControlInput(form.onlyLetters($lastname.value),$lastname,$errorMessageLastName);
+            validateControlInput(form.onlyLetters($lastname.value), $lastname, $errorMessageLastName);
         } else {
             $errorMessageLastName.classList.add("d-none");
             form.validDataStyleBorder($lastname.parentElement);
@@ -88,7 +93,7 @@ $dateExpiry.addEventListener("focusin", e => {
 
 d.addEventListener("keyup", e => {
     if (e.target === $creditInput) {
-        validateControlInput(form.validCreditTarget($creditInput.value),$creditInput,$errorMessageCredit);
+        validateControlInput(form.validCreditTarget($creditInput.value), $creditInput, $errorMessageCredit);
     }
 
     if (e.target === $dateExpiry) {
@@ -121,21 +126,21 @@ d.addEventListener("keyup", e => {
             $dateExpiry.value = arrayDateValue.join('');
         }
 
-        validateControlInput(form.validDateFormatMMAA($dateExpiry.value),$dateExpiry,$errorMessageDate);
+        validateControlInput(form.validDateFormatMMAA($dateExpiry.value), $dateExpiry, $errorMessageDate);
 
     }
 
     if (e.target === $cvv) {
-        validateControlInput(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value),$cvv,$errorMessageCvv);
+        validateControlInput(/^[A-Za-z0-9]{3,4}$/g.test($cvv.value), $cvv, $errorMessageCvv);
     }
 
     if (e.target === $name) {
-        validateControlInput(form.onlyLetters($name.value),$name,$errorMessageName);
+        validateControlInput(form.onlyLetters($name.value), $name, $errorMessageName);
     }
 
     if (e.target === $lastname) {
         if (e.target.value.length > 0) {
-            validateControlInput(form.onlyLetters($lastname.value),$lastname,$errorMessageLastName);
+            validateControlInput(form.onlyLetters($lastname.value), $lastname, $errorMessageLastName);
         } else {
             $errorMessageLastName.classList.add("d-none");
             form.validDataStyleBorder($lastname.parentElement);
@@ -152,12 +157,12 @@ d.addEventListener("DOMContentLoaded", e => {
 });
 
 
-function validateControlInput(validation,input,message){
-    if(!validation){
+function validateControlInput(validation, input, message) {
+    if (!validation) {
         input.focus();
         message.classList.remove("d-none");
         form.invalidDataStyleBorder(input.parentElement);
-    }else{
+    } else {
         message.classList.add("d-none");
         form.validDataStyleBorder(input.parentElement);
     }

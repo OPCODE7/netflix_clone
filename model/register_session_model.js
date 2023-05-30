@@ -8,4 +8,8 @@ export default class RegisterModel{
         return getSession;
     }
 
+    closeSession(){
+        localStorage.removeItem("user");
+    }
+
 }
