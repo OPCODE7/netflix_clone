@@ -1,14 +1,10 @@
-import TranslateGoogleController from "../../../controller/translate_google_feature_controller.js";
 import { Form } from "../../../js/helper/form.js";
 
 const d = document;
 
-const translateGoogleController = new TranslateGoogleController();
 const form = new Form();
 
-const $buttonTranslate = d.querySelector("#google_translate_element");
-let google_script_url = "//translate.google.com/translate_a/element.js";
-let script = d.querySelector("script[src*='" + google_script_url + "']");
+
 const $creditInput = d.getElementsByName("credit-card")[0];
 const $dateExpiry = d.getElementsByName("date-expiry")[0];
 const $cvv = d.getElementsByName("cvv")[0];
@@ -19,21 +15,19 @@ const $errorMessageCredit = $creditInput.parentElement.nextElementSibling, $erro
 
 
 d.addEventListener("click", e => {
-    e.preventDefault();
-
-    if (e.target === $buttonTranslate) {
-        translateGoogleController.googleTranslateElementInit(e.target.id, script);
-    }
 
     if (e.target.matches("#btn-open-modal-cvv")) {
+        e.preventDefault();
         d.querySelector(".container-cvv-question").classList.remove("d-none");
     }
 
     if (e.target.matches("#close-cvv-modal")) {
+        e.preventDefault();
         d.querySelector(".container-cvv-question").classList.add("d-none");
     }
 
     if (e.target.matches("#start-membership")) {
+        e.preventDefault();
         if (form.validEmptyInput($creditInput.value) || !form.validCreditTarget($creditInput.value)) {
             $creditInput.focus();
             form.invalidDataStyleBorder($creditInput.parentElement);
@@ -152,12 +146,6 @@ d.addEventListener("keyup", e => {
 
 d.addEventListener("DOMContentLoaded", e => {
     let infoPlan = JSON.parse(localStorage.getItem("infoPlanSelected"));
-    $buttonTranslate.click();
-    if ($buttonTranslate.classList.contains("light-style")) {
-        setTimeout(() => {
-            d.querySelector(".VIpgJd-ZVi9od-xl07Ob-lTBxed > span:first-of-type").classList.add("text-dark");
-        }, 3000);
-    }
 
     d.querySelector("#price-plan").textContent = infoPlan.price;
     d.querySelector("#description-plan").textContent = infoPlan.description;
