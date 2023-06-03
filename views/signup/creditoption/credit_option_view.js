@@ -150,7 +150,7 @@ d.addEventListener("keyup", e => {
 
 
 d.addEventListener("DOMContentLoaded", e => {
-    let infoPlan = JSON.parse(localStorage.getItem("infoPlanSelected"));
+    let infoPlan = JSON.parse(localStorage.getItem("suscription-info"));
 
     d.querySelector("#price-plan").textContent = infoPlan.price;
     d.querySelector("#description-plan").textContent = infoPlan.description;

@@ -1,7 +1,15 @@
+import SuscriptionPlanController from "../../../controller/plan_controller.js";
 import RegisterController from "../../../controller/register_session_controller.js";
 
 const d = document;
 const registerController= new RegisterController();
+const suscriptionPlanController= new SuscriptionPlanController();
+
+
+const infoPlanSelected= {
+    price:"USD10.99",
+    description:"Premium"
+};
 
 d.addEventListener("click", e => {
     if (e.target.matches(".btn-session")) {
@@ -20,6 +28,8 @@ d.addEventListener("click", e => {
 
 
         if (e.target.id === "btn-basic-plan") {
+            infoPlanSelected.price= "USD4.99";
+            infoPlanSelected.description= "Básico";
             $btnBasicPlan.classList.add("plan-selected");
 
             if ($btnStandardPlan.classList.contains("plan-selected")) $btnStandardPlan.classList.remove("plan-selected");
@@ -40,6 +50,8 @@ d.addEventListener("click", e => {
                 }
             });
         } else if (e.target.id === "btn-standard-plan") {
+            infoPlanSelected.price= "USD7.99";
+            infoPlanSelected.description= "Estándar";
             $btnStandardPlan.classList.add("plan-selected");
 
             if ($btnBasicPlan.classList.contains("plan-selected")) $btnBasicPlan.classList.remove("plan-selected");
@@ -61,6 +73,8 @@ d.addEventListener("click", e => {
                 }
             });
         } else if (e.target.id === "btn-premium-plan") {
+            infoPlanSelected.price= "USD7.99";
+            infoPlanSelected.description= "Estándar";
             $btnPremiumPlan.classList.add("plan-selected");
 
             if ($btnBasicPlan.classList.contains("plan-selected")) $btnBasicPlan.classList.remove("plan-selected");
@@ -80,7 +94,10 @@ d.addEventListener("click", e => {
                 }
             });
         }
+    }
 
-
+    if(e.target.matches("#go-payment-picker")){
+        alert("hola")
+        suscriptionPlanController.savePlanData(infoPlanSelected);
     }
 });
