@@ -22,12 +22,13 @@ d.addEventListener("click",e => {
             form.invalidDataStyleBorder($pwd.parentElement);
         }else{
             let response= loginController.getLoginData("data-user",$email.value,$pwd.value);
-            console.log(response);
             if(response){
                 location.href= "views/ver";
-                console.log("hola")
             }else{
-                alert("Usuario o contraseña incorrecta");
+                $emailValidMessage.textContent= "Usuario y/o contraseña incorrecta";
+                $pwdValidMessage.textContent= "Usuario y/o contraseña incorrecta";
+                $emailValidMessage.classList.remove("d-none");
+                $pwdValidMessage.classList.remove("d-none");
             }
         }
     }

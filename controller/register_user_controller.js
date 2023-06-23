@@ -8,14 +8,42 @@ export default class RegisterUserController{
         this.form= new Form();
     }
 
-    saveData(data){
+    saveDataUser(data){
+        let sessions= JSON.parse(this.registerUserModel.getDataUser());
+        let arraySession= [data];
+
         if(!this.form.validEmail(data.email)){
             return "email invalid";
         }else if(!this.form.validPassword(data.pwd)){
             return "pwd invalid";
         }else{
-            this.registerUserModel.saveData(JSON.stringify(data));
+            if(sessions!==null){
+
+                this.registerUserModel.saveDataUser(JSON.stringify([...sessions,...arraySession]));
+            }else{
+                this.registerUserModel.saveDataUser(JSON.stringify(arraySession));
+            }
             return "success";
+        }
+    }
+
+    saveSession(data){
+        this.registerUserModel.saveSession(JSON.stringify(data));
+    }
+
+    getDataUser(){
+        let getDataUser= this.registerUserModel.getDataUser();
+        return getDataUser;
+    }
+
+    getSession(){
+        let getSession= this.registerUserModel.getSession();
+        return getSession;
+    }
+
+    closeSession(){
+        if(this.registerUserModel.getDataUser()!==null){
+            this.registerUserModel.closeSession();
         }
     }
 
