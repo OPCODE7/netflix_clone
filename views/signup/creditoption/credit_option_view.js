@@ -1,11 +1,15 @@
-import RegisterController from "../../../controller/register_session_controller.js";
+import RegisterController from "../../../controller/register_user_controller.js";
+import SuscriptionPlanController from "../../../controller/plan_controller.js";
+import MembershipController from "../../../controller/membership_controller.js";
 import { Form } from "../../../js/helper/form.js";
+
 
 const d = document;
 
 const form = new Form();
 const registerController= new RegisterController();
-
+const planController= new SuscriptionPlanController();
+const registerMembershipController= new MembershipController();
 
 const $creditInput = d.getElementsByName("credit-card")[0];
 const $dateExpiry = d.getElementsByName("date-expiry")[0];
@@ -51,7 +55,11 @@ d.addEventListener("click", e => {
             form.invalidDataStyleBorder($name.parentElement);
             $errorMessageName.classList.remove("d-none");
         } else {
-            window.location.href = "home";
+            let planInfo= JSON.parse(planController.getPlanData());
+            let currentSession= JSON.parse(registerController.getSession());
+            registerMembershipController.saveMembership({"name": `${$name.value} ${$lastname.value}` ,...currentSession,...planInfo});
+
+           //window.location.href = "home";
         }
     }
 });
@@ -150,6 +158,7 @@ d.addEventListener("keyup", e => {
 
 
 d.addEventListener("DOMContentLoaded", e => {
+
     let infoPlan = JSON.parse(localStorage.getItem("suscription-info"));
 
     d.querySelector("#price-plan").textContent = infoPlan.price;

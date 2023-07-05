@@ -39,6 +39,7 @@ d.addEventListener("click", e => {
 });
 
 d.addEventListener("DOMContentLoaded", e => {
+
     let existSession= registerUserController.getSession();
     const $signupEmail= d.querySelectorAll("#signup-email");
     const $buttonStartSuscription= d.querySelectorAll(".button-started");

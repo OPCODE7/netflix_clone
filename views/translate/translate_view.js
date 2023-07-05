@@ -13,6 +13,12 @@ $buttonTranslate.addEventListener("click", e => {
 });
 
 d.addEventListener("DOMContentLoaded", e => {
+    setTimeout(() => {
+        const $language= d.querySelector(".VIpgJd-ZVi9od-xl07Ob-lTBxed").firstElementChild;
+
+        if($language!==null && $language.textContent==="Seleccionar idioma") $language.textContent= "español";
+    }, 5000);
+    
     $buttonTranslate.click();
     if($buttonTranslate.classList.contains("light-style")){
         setTimeout(() => {

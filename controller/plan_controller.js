@@ -11,4 +11,9 @@ export default class SuscriptionPlanController{
             this.planModel.savePlanData(JSON.stringify(data));
         }
     }
+
+    getPlanData(){
+        let infoPlan= this.planModel.getPlanData();
+        return infoPlan;
+    }
 }

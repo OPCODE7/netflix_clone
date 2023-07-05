@@ -1,5 +1,5 @@
 import SuscriptionPlanController from "../../../controller/plan_controller.js";
-import RegisterController from "../../../controller/register_session_controller.js";
+import RegisterController from "../../../controller/register_user_controller.js";
 
 const d = document;
 const registerController= new RegisterController();
@@ -97,7 +97,6 @@ d.addEventListener("click", e => {
     }
 
     if(e.target.matches("#go-payment-picker")){
-        alert("hola")
         suscriptionPlanController.savePlanData(infoPlanSelected);
     }
 });
